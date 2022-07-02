@@ -1,0 +1,40 @@
+\documentclass[hyperref,UTF8]{ctexart}
+\usepackage{hyperref}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{geometry}
+\geometry{a4paper,scale=0.72}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+
+\title{\textbf{roots.c}功能说明}
+
+
+\author{邵盛栋 \\ 信息与计算科学 3200103951}
+
+\begin{document}
+	
+	\maketitle	
+	\section*{说明}
+	对于该求根算法，我们将使用一般的二次方程。我们已有一个头文件(\verb|demo_fn.h|)来定义函数参数,并将该函数定义放在一个单独的文件中(\verb|demo_fn.c|)。\verb|root.c|这一程序使用Brent方法的函数求解器\verb|gsl_root_fsolver_brent|和我们已定义的一般的二次函数来求解下面的方程：
+	\[x^{2}-5=0\]
+	结果为$ x=\sqrt{5}=2.236068\dots $
+	
+	以下是运行\verb|roots.c|后迭代的结果：
+	\begin{verbatim}
+		$ ./bin/roots 
+		using brent method
+		iter [    lower,     upper]      root        err  err(est)
+		1 [1.0000000, 5.0000000] 1.0000000 -1.2360680 4.0000000
+		2 [1.0000000, 3.0000000] 3.0000000 +0.7639320 2.0000000
+		3 [2.0000000, 3.0000000] 2.0000000 -0.2360680 1.0000000
+		4 [2.2000000, 3.0000000] 2.2000000 -0.0360680 0.8000000
+		5 [2.2000000, 2.2366300] 2.2366300 +0.0005621 0.0366300
+		Converged:
+		6 [2.2360634, 2.2366300] 2.2360634 -0.0000046 0.0005666
+	\end{verbatim}
+\end{document}
